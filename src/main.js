@@ -40,7 +40,7 @@ yellowTexture.repeat.set(2, 1);
 createCastle(scene, yellowTexture);
 
 //Animation Loop
-function animate() {
+const animate = () => {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
