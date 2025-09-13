@@ -17,6 +17,9 @@ document.body.appendChild(renderer.domElement);
 
 //Controls
 const controls = new OrbitControls(camera, renderer.domElement);
+// Set zoom in and zoom out limits
+controls.minDistance = 5;   // Minimum zoom in distance
+controls.maxDistance = 40;  // Maximum zoom out distance
 
 //Lights
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
