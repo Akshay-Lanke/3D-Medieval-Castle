@@ -7,7 +7,7 @@ import { createCastle } from './castle/castlestructure.js';
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xbfd1e5);
 
-const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(10, 10, 20);
 
 const renderer = new THREE.WebGLRenderer({antialias: true});
