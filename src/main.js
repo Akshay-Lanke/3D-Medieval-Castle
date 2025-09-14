@@ -29,15 +29,23 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
 directionalLight.position.set(10, 20, 10);
 scene.add(directionalLight);
 
-//Load Texture
+//Load Texture and show loader
+const loaderOverlay = document.getElementById('loader-overlay');
 const textureLoader = new THREE.TextureLoader();
-const yellowTexture = textureLoader.load('./assets/yellow_texture.jpg');
-yellowTexture.wrapS = THREE.RepeatWrapping;
-yellowTexture.wrapT = THREE.RepeatWrapping;
-yellowTexture.repeat.set(2, 1);
-
-//Create Castle
-createCastle(scene, yellowTexture);
+textureLoader.load(
+    './assets/yellow_texture.jpg',
+    (yellowTexture) => {
+        yellowTexture.wrapS = THREE.RepeatWrapping;
+        yellowTexture.wrapT = THREE.RepeatWrapping;
+        yellowTexture.repeat.set(2, 1);
+        createCastle(scene, yellowTexture);
+        if (loaderOverlay) loaderOverlay.style.display = 'none';
+    },
+    undefined,
+    (err) => {
+        if (loaderOverlay) loaderOverlay.innerHTML = '<div style="color:#ff6666">Failed to load assets.</div>';
+    }
+);
 
 //Animation Loop
 const animate = () => {
